@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container" id="app">
+        <div class="card">
+            <h1 :style="{
+                color: inputValue.length < 5 ? 'lightgreen' : 'blue'
+            }">{{ title }}</h1>
+            <div class="form-control">
+                <input type="text" :placeholder="placeholder" v-model="inputValue" @keypress.enter="addTask" />
+            </div>
+
+            <button class="btn" @click="addTask">Add</button>
+            <hr />
+            <ul class="list" v-if="notes.length !==0">
+                <li class="list-item" v-for="(note, i) in notes">
+                    ({{i + 1}}){{toUpperCase(note)}}
+                    <button class="btn danger" @click="removeTask(i)">Delete</button>
+                </li>
+                <hr />
+                <li>
+                    <strong>Total Tasks: {{notes.length}}</strong>
+                </li>
+            </ul>
+            <div v-else>You not have tasks yet, add first one</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
