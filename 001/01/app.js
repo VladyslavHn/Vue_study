@@ -10,7 +10,7 @@ const App = {
     methods: {
         addTask() {
             if (this.inputValue !== "") {
-                this.notes.push(this.inputValue);
+                this.notes.unshift(this.inputValue);
                 this.inputValue = "";
                 this.saveTasks(); 
             }
